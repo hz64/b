@@ -5,7 +5,7 @@
 * Copyright (c) 2011-2013 gskinner.com, inc.
 *
 * Distributed under the terms of the MIT license.
-* https://mp.weixin.qq.com/s?__biz=MzUzOTY4Njc1MQ==&mid=2247483654&idx=1&sn=d078ec9b801fb071f0c5053c9bb8215c
+* https://hz64.github.io/
 *
 * This notice shall be included in all copies or substantial portions of the Software.
 */

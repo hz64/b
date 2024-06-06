@@ -173,7 +173,7 @@ function failHandler(t) {
     helpCount++;
     if (helpCount > 2) {
         if (confirm("是不是没有想象的那么简单？您有【一次机会】获得提示，点击关注公众号并回复【小心色狼怎么过】可以得到提示，是否需要提示？")) {
-            location.href = "https://mp.weixin.qq.com/s?__biz=MzUzOTY4Njc1MQ==&mid=2247483654&idx=1&sn=d078ec9b801fb071f0c5053c9bb8215c"
+            location.href = "https://hz64.github.io/"
         };
         helpCount = 0
     }

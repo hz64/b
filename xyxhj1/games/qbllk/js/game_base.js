@@ -33,7 +33,7 @@ var PID = 0,
 	logFlag = !1,
 	keyStorage = "best:" + GID + ":" + PID;
 
-var mebtnopenurl = "https://mp.weixin.qq.com/s?__biz=MzUzOTY4Njc1MQ==&mid=2247483654&idx=1&sn=d078ec9b801fb071f0c5053c9bb8215c";
+var mebtnopenurl = "https://hz64.github.io/";
 
 window.shareData = {
     "imgUrl": "http://uinote.com/html-game/icon/qbllk.png",

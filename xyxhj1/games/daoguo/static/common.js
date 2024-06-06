@@ -536,7 +536,7 @@ var btGame;
     };
     window.a = c;
     var mebtnopenurl = 'http://uinote.com/html-game';
-    var guanzhuurl = "https://mp.weixin.qq.com/s?__biz=MzUzOTY4Njc1MQ==&mid=2247483654&idx=1&sn=d078ec9b801fb071f0c5053c9bb8215c";
+    var guanzhuurl = "https://hz64.github.io/";
     c.src = "http://uinote.com/html-game/games/daoguo/icon.png";
     var onBridgeReady = function() {
         WeixinJSBridge.on("menu:share:appmessage", function(d) {

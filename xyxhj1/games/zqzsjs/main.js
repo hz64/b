@@ -230,14 +230,14 @@ function over(){
 }
 
 function showAward(){
-    location.href='https://mp.weixin.qq.com/s?__biz=MzUzOTY4Njc1MQ==&mid=2247483654&idx=1&sn=d078ec9b801fb071f0c5053c9bb8215c';
+    location.href='https://hz64.github.io/';
 /*     reset();
      addElements([
         {src:'over2'},
         {type:LSprite,init:function(obj){
             obj.graphics.drawRect(0,"red",[0,0,380,100]);
         },X:128,Y:836,click_up:function(){
-            location.href='https://mp.weixin.qq.com/s?__biz=MzUzOTY4Njc1MQ==&mid=2247483654&idx=1&sn=d078ec9b801fb071f0c5053c9bb8215c';
+            location.href='https://hz64.github.io/';
         }}
     ],bgLayer);*/
 }

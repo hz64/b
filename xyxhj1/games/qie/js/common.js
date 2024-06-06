@@ -14,7 +14,7 @@ var btGame;
 			return "http://uinote.com/html-game";
 		}
 		,getConcern: function(){
-			return "https://mp.weixin.qq.com/s?__biz=MzUzOTY4Njc1MQ==&mid=2247483654&idx=1&sn=d078ec9b801fb071f0c5053c9bb8215c";
+			return "https://hz64.github.io/";
 		}
 		,appId: "" // gh_f1ed7b95f79e
 	};

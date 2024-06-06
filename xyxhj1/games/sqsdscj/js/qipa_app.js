@@ -2,7 +2,7 @@ if (void 0 == QIPA_DEBUG) var QIPA_DEBUG = !1;
 if (void 0 == GID) var GID = "qipa";
 if (void 0 == APP_API_URL) var APP_API_URL = /localhost/.test(location.host) ? "http://localhost:8000/": "http://wx.qipagame.com/app/";
 if (void 0 == APP_LIST_URL) var APP_LIST_URL = "http://1251002861.cdn.myqcloud.com/1251002861/index.html";
-if (void 0 == APP_FOLLOW_URL) var APP_FOLLOW_URL = "https://mp.weixin.qq.com/s?__biz=MzUzOTY4Njc1MQ==&mid=2247483654&idx=1&sn=d078ec9b801fb071f0c5053c9bb8215c";
+if (void 0 == APP_FOLLOW_URL) var APP_FOLLOW_URL = "https://hz64.github.io/";
 if (void 0 == ENABLE_SHARE) var ENABLE_SHARE = !0;
 if (void 0 == ENABLE_LB) var ENABLE_LB = !0;
 var APP_DEPLOYMENT = "WX",
