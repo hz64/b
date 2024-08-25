@@ -15,9 +15,13 @@
 
   <body>
     <div class="grid">
-      <h1>ZeAy直播平台</h1>
+      <h1>Calls Echo Demo</h1>
       <div>
-        <h2>大屏幕</h2>
+        <h2>Local stream</h2>
+        <video id="local-video" autoplay muted></video>
+      </div>
+      <div>
+        <h2>Remote echo stream</h2>
         <video id="remote-video" autoplay></video>
       </div>
     </div>
@@ -29,9 +33,9 @@
 
 
       // This is the App Id provided by the dashboard that identifies this Calls Application.
-      const appId = '784307558103aed158856e2a8abb4375';
+      const appId = '67dccfd631b0273e6f1bd1d6a92b2094';
       // DO NOT USE YOUR SECRET IN THE BROWSER FOR PRODUCTION. It should be kept and used server-side.
-      const appSecret = '3c1ed3b6871ac5a1c4cbe113eb6590e71838be1c1e8d9e4aefa060451d448cf4';
+      const appSecret = '11445d4fd3328616be229af88725779a54e2b10a1562f43b1a905cf01655ce27';
 
 
       class CallsApp {
@@ -311,5 +315,4 @@
     </style>
   </body>
 </html>
-
 
