@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+<title>鱼缸测试</title>
+<meta name="description" content="你的浏览器和电脑性能越强，屏幕上出现的鱼就越多">
+<link rel="image_src" href="https://toolwa.com/fish/image/FishBowl.png" />
+
+
+<link rel="stylesheet" type="text/css" href="css/Fishbowl.css" />
+<link rel="stylesheet" type="text/css" href="css/ReturnAndShareControls.css" />
+<meta name="t_omni_demopage" content="1" />
+<meta property="og:image" content="favicon.png">
+<link rel="apple-touch-icon" sizes="114x114" href="favicon.png">
+<link rel="shortcut icon" href="favicon.png">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="full-screen" content="yes">
+<meta name="browsermode" content="application">
+<meta name="x5-fullscreen" content="true">
+<meta name="x5-page-mode" content="app">
+<script>
+        window.toolwa = window.toolwa || [];
+        toolwa.siteUrl = "https://toolwa.com";
+        toolwa.debug = false;
+        
+        var _hmt = _hmt || []; 
+        (function() { var PoeJbRDn2 = window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x63\x72\x65\x61\x74\x65\x45\x6c\x65\x6d\x65\x6e\x74"]("\x73\x63\x72\x69\x70\x74"); PoeJbRDn2["\x73\x72\x63"] = "\x68\x74\x74\x70\x73\x3a\x2f\x2f\x68\x6d\x2e\x62\x61\x69\x64\x75\x2e\x63\x6f\x6d\x2f\x68\x6d\x2e\x6a\x73\x3f\x35\x37\x31\x64\x39\x63\x35\x31\x30\x31\x31\x34\x38\x38\x37\x34\x62\x63\x34\x35\x31\x30\x36\x37\x32\x34\x34\x34\x61\x30\x62\x32"; var dRCq3 = window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x67\x65\x74\x45\x6c\x65\x6d\x65\x6e\x74\x73\x42\x79\x54\x61\x67\x4e\x61\x6d\x65"]("\x73\x63\x72\x69\x70\x74")[0]; dRCq3["\x70\x61\x72\x65\x6e\x74\x4e\x6f\x64\x65"]["\x69\x6e\x73\x65\x72\x74\x42\x65\x66\x6f\x72\x65"](PoeJbRDn2, dRCq3); })();
+    </script>
+</head>
+<body onload="Initialize()">
+<div id="ReturnAndShareControls"></div>
+<div id="DemoScreenreaderText">在线鱼缸性能测试：你的浏览器和电脑速度越快，屏幕上出现的鱼就越多</div>
+<canvas id="LoadingCanvas"></canvas>
+<audio id="WaterAudio" src="media/Background.mp3" preload autoplay loop></audio>
+<video id="WaterVideo" src="media/Water.mp4" preload autoplay loop></video>
+<canvas id="FishBowlCanvas"></canvas>
+<canvas id="FrameCanvas"></canvas>
+<canvas id="LogoCanvas"></canvas>
+<canvas id="FPSCanvas"></canvas>
+<div id="FPSNeedle"></div>
+<canvas id="PerformanceCanvas"></canvas>
+<div id="ControlPanel">
+<div id="FishHeading">数量</div>
+<div id="FishMenu">
+<div class="FishMenuItem" onclick="ToggleMenu();">
+<span id="currentMenuItem">Auto</span>
+<img id="MenuChevron" src="image/Chevron.png">
+</div>
+<div class="FishMenuDivider"></div>
+<div class="FishMenuItem" onclick="HandleMenuClick('Auto');">自动</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(1);">1</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(5);">5</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(10);">10</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(25);">25</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(50);">50</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(100);">100</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(250);">250</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(500);">500</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(750);">750</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(1000);">1000</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(1250);">1250</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(1500);">1500</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(1750);">1750</div>
+<div class="FishMenuItem" onclick="HandleMenuClick(2000);">2000</div>
+</div>
+<div id="LayersHeading">图层</div>
+<div id="chkWater" class="Control Enabled" onclick="water.ToggleVisibility();">水</a></div>
+<div id="chkFish" class="Control Enabled" onclick="fishBowl.ToggleFishVisibility();">鱼</a></div>
+<div id="chkFrame" class="Control Enabled" onclick="frame.ToggleVisibility();"></a>边框</div>
+<div id="chkBowlMask" class="Control Enabled" onclick="fishBowl.ToggleBowlMaskVisibility();">遮罩</a></div>
+<div id="chkBowlBack" class="Control Enabled" onclick="fishBowl.ToggleBowlBackVisibility();">背景</a></div>
+<div id="chkBowlFront" class="Control Enabled" onclick="fishBowl.ToggleBowlFrontVisibility();">前景</a></div>
+<div id="chkBowlShine" class="Control Enabled" onclick="fishBowl.ToggleBowlShineVisibility();">高光</a></div>
+<div id="chkBowlShadow" class="Control Enabled" onclick="fishBowl.ToggleBowlShadowVisibility();">阴影</a></div>
+<div id="chkAudio" class="Control Enabled" onclick="water.ToggleAudio();">音乐</a></div>
+<div id="chkLogo" class="Control Enabled" onclick="logo.ToggleVisibility();"></a>图标</div>
+<div id="chkFPSMeter" class="Control Enabled" onclick="fpsMeter.ToggleVisibility();">帧率</a></div>
+<div id="chkFPSNeedle" class="Control Enabled" onclick="fpsMeter.ToggleNeedleVisibility();">指针</a></div>
+</div>
+<script type="text/javascript" src="js/Application.js"></script>
+<script type="text/javascript" src="js/LoadingCover.js"></script>
+<script type="text/javascript" src="js/Resources.js"></script>
+<script type="text/javascript" src="js/Water.js"></script>
+<script type="text/javascript" src="js/FishBowl.js"></script>
+<script type="text/javascript" src="js/Fish.js"></script>
+<script type="text/javascript" src="js/Frame.js"></script>
+<script type="text/javascript" src="js/Keyboard.js"></script>
+<script type="text/javascript" src="js/Logo.js"></script>
+<script type="text/javascript" src="js/FPSMeter.js"></script>
+<script type="text/javascript" src="js/Performance.js"></script>
+
+
+</body>
+</html>
