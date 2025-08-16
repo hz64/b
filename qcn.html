@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>小米QCN基带下载</title>
-<meta name="description" content="提供小米QCN基带文件的下载，包括文件名、发布日期、文件大小和MD5校验码。">
-<meta name="keywords" content="小米,QCN,基带,下载,zeusQCN,Xiaomi_Mi5s,y3-">
+<meta name="description" content="小米QCN基带下载列表，提供最新QCN文件下载，带文件大小、发布日期和MD5校验。">
+<meta name="keywords" content="小米,QCN,基带,QCN下载,SourceForge">
 <meta name="robots" content="index, follow">
-
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-200 font-sans min-h-screen flex flex-col items-center p-4">
@@ -39,9 +38,7 @@
 </div>
 
 <script>
-const ORIGINAL_RSS_URL = 'https://sourceforge.net/projects/hz64/rss?path=/qcn';
-const PROXY_URL = 'https://corsproxy.io/?';
-const RSS_URL = PROXY_URL + encodeURIComponent(ORIGINAL_RSS_URL);
+const RSS_URL = 'https://api.hz6.us.kg/qcn.php';
 
 const desktopTbody = document.getElementById("rss-table-body-desktop");
 const cardContainer = document.getElementById("rss-card-container");
@@ -59,41 +56,38 @@ function formatBytes(bytes, decimals = 2) {
 
 function renderRss(items) {
     desktopTbody.innerHTML = '';
+    cardContainer.innerHTML = '';
+
     if (!items.length) {
         desktopTbody.innerHTML = '<tr><td colspan="5" class="text-center py-4 text-gray-500">没有找到文件。</td></tr>';
-    } else {
-        items.forEach(item => {
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td class="px-4 py-2 text-sm sm:text-xs font-medium text-gray-900">${item.title}</td>
-                <td class="px-4 py-2 text-sm sm:text-xs text-gray-500">${item.pubDate.toLocaleDateString()}</td>
-                <td class="px-4 py-2 text-sm sm:text-xs text-gray-500">${formatBytes(item.filesize)}</td>
-                <td class="px-4 py-2 text-sm sm:text-xs text-gray-500">${item.md5Hash}</td>
-                <td class="px-4 py-2 text-sm sm:text-xs font-medium">
-                    <a href="${item.link}" class="text-indigo-600 hover:text-indigo-900" target="_blank" rel="noopener noreferrer">下载</a>
-                </td>
-            `;
-            desktopTbody.appendChild(row);
-        });
+        cardContainer.innerHTML = '<div class="text-center py-4 text-gray-500">没有找到文件。</div>';
+        return;
     }
 
-    cardContainer.innerHTML = '';
-    if (!items.length) {
-        cardContainer.innerHTML = '<div class="text-center py-4 text-gray-500">没有找到文件。</div>';
-    } else {
-        items.forEach(item => {
-            const card = document.createElement("div");
-            card.className = "bg-white shadow-md rounded-md p-4 flex flex-col gap-2";
-            card.innerHTML = `
-                <div class="font-semibold text-gray-900">${item.title}</div>
-                <div class="text-gray-500 text-sm">发布日期: ${item.pubDate.toLocaleDateString()}</div>
-                <div class="text-gray-500 text-sm">文件大小: ${formatBytes(item.filesize)}</div>
-                <div class="text-gray-500 text-sm">MD5: ${item.md5Hash}</div>
-                <a href="${item.link}" class="text-indigo-600 hover:text-indigo-900 font-medium" target="_blank" rel="noopener noreferrer">下载</a>
-            `;
-            cardContainer.appendChild(card);
-        });
-    }
+    items.forEach(item => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td class="px-4 py-2 text-sm sm:text-xs font-medium text-gray-900">${item.title}</td>
+            <td class="px-4 py-2 text-sm sm:text-xs text-gray-500">${item.pubDate.toLocaleDateString()}</td>
+            <td class="px-4 py-2 text-sm sm:text-xs text-gray-500">${formatBytes(item.filesize)}</td>
+            <td class="px-4 py-2 text-sm sm:text-xs text-gray-500">${item.md5Hash}</td>
+            <td class="px-4 py-2 text-sm sm:text-xs font-medium">
+                <a href="${item.link}" class="text-indigo-600 hover:text-indigo-900" target="_blank" rel="noopener noreferrer">下载</a>
+            </td>
+        `;
+        desktopTbody.appendChild(row);
+
+        const card = document.createElement("div");
+        card.className = "bg-white shadow-md rounded-md p-4 flex flex-col gap-2";
+        card.innerHTML = `
+            <div class="font-semibold text-gray-900">${item.title}</div>
+            <div class="text-gray-500 text-sm">发布日期: ${item.pubDate.toLocaleDateString()}</div>
+            <div class="text-gray-500 text-sm">文件大小: ${formatBytes(item.filesize)}</div>
+            <div class="text-gray-500 text-sm">MD5: ${item.md5Hash}</div>
+            <a href="${item.link}" class="text-indigo-600 hover:text-indigo-900 font-medium" target="_blank" rel="noopener noreferrer">下载</a>
+        `;
+        cardContainer.appendChild(card);
+    });
 }
 
 async function fetchAndParseRss() {
@@ -105,10 +99,8 @@ async function fetchAndParseRss() {
         const xmlText = await response.text();
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, "application/xml");
-        const errorNode = xmlDoc.querySelector('parsererror');
-        if (errorNode) throw new Error("解析 RSS 数据失败");
-
         const items = xmlDoc.getElementsByTagName("item");
+
         rssItems = [];
 
         for (let i=0;i<items.length;i++){
