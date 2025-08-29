@@ -1,0 +1,272 @@
+<!DOCTYPE html> 
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致映梦宝宝的七夕信</title>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', sans-serif;
+            color: #5a4b4b;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f7e8e8 0%, #ffe2e2 50%, #f7e8e8 100%);
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        /* 背景爱心 */
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 100, 150, 0.7);
+            animation: floatHeart 10s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0;
+        }
+        @keyframes floatHeart {
+            0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(50px) scale(1.2); opacity: 0; }
+        }
+
+        /* 背景相片 */
+        .background-photos {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* 在最底层 */
+            pointer-events: none;
+        }
+        .background-photos img {
+            position: absolute;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            opacity: 0.5;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            width: 30vw; 
+            height: 30vw;
+            max-width: 260px;
+            max-height: 260px;
+            filter: grayscale(25%) brightness(1.1);
+        }
+        .photo-1 { top: 8%; left: 5%; transform: rotate(-12deg); }
+        .photo-2 { top: 20%; right: 8%; transform: rotate(10deg); }
+        .photo-3 { bottom: 12%; left: 12%; transform: rotate(5deg); }
+        .photo-4 { bottom: 6%; right: 6%; transform: rotate(-15deg); }
+        .photo-5 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(20deg); opacity: 0.35; width: 35vw; height: 35vw; }
+
+        /* 文字信件容器 */
+        .container {
+            position: relative;
+            z-index: 10; /* 确保在图片上面 */
+            width: 90%;
+            max-width: 760px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            line-height: 2;
+            font-size: 18px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: fadeIn 1.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .letter-content {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+            text-align: justify;
+        }
+        .letter-content.show { opacity: 1; }
+
+        /* 打字光标 */
+        .typing-cursor {
+            display: inline-block;
+            font-size: 1.2em;
+            color: #ff6699;
+            vertical-align: middle;
+            animation: blink-caret 0.75s step-end infinite;
+            margin-left: 2px;
+        }
+        @keyframes blink-caret {
+            from, to { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        /* 音乐播放器 */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px 15px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            font-size: 15px;
+            color: #6a5c5c;
+        }
+        .music-player button {
+            background: #ff6699;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .music-player button:hover { background: #e65c8a; }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .container { font-size: 16px; padding: 20px; }
+            .background-photos img { width: 40vw; height: 40vw; max-width: 180px; max-height: 180px; }
+        }
+        @media (max-width: 480px) {
+            .container { font-size: 14px; padding: 15px; }
+            .background-photos img { width: 50vw; height: 50vw; max-width: 140px; max-height: 140px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景爱心 -->
+    <div class="hearts-background"></div>
+
+    <!-- 背景照片 -->
+    <div class="background-photos">
+        <img src="./img/1.jpg" alt="七夕照片1" class="photo-1">
+        <img src="./img/2.jpg" alt="七夕照片2" class="photo-2">
+        <img src="./img/3.jpg" alt="七夕照片3" class="photo-3">
+        <img src="./img/4.jpg" alt="七夕照片4" class="photo-4">
+        <img src="./img/5.jpg" alt="七夕照片5" class="photo-5">
+    </div>
+
+    <!-- 信件内容 -->
+    <div class="container">
+        <div id="letter-content" class="letter-content"></div>
+    </div>
+
+    <!-- 音乐播放器 -->
+    <div class="music-player">
+        <audio id="bg-music" src="./1.mp3" loop></audio>
+        <button id="music-toggle-btn" onclick="toggleMusic()">▶</button>
+        <span id="music-status">音乐加载中...</span>
+    </div>
+
+    <script>
+        const letterText = `给映梦宝宝的一封信
+
+亲爱的宝宝：
+
+这是我们一起度过的第一个七夕，提笔写下这些字的时候，心里满是甜甜的暖意。多幸运呀，茫茫人海里，我们能刚好走进彼此的生活，成为对方眼里特别的存在。
+
+我知道自己不算完美，偶尔会因为在意你而有点小敏感，会偷偷吃醋，也会因为担心失去而胡思乱想。但和你在一起的每一刻，都让我觉得特别安心——我盼着未来的日子里，我们能一直这样互相依靠，你为我遮风挡雨，我也想做你难过时的小港湾。
+
+以前我总说不清“爱”到底是什么，直到遇见你才明白，原来爱就是看见你笑，我也会跟着开心；是吃到好吃的，第一反应是想下次带你一起尝；是你认真告诉我“你在我心里独一无二”时，我心里涌起的满满幸福感。
+
+宝宝，我想一直和你在一起。想每天跟你分享琐碎的小事，想陪你一起做那些幼稚又有趣的傻事；也希望你有不开心时别自己扛，我的肩膀永远为你留着，你觉得我哪里做得不好，也一定要直白地告诉我，我们一起慢慢变好。
+
+有人说喜欢是权衡后的选择，但我觉得，爱就是“非你不可”。虽然现在的我们还小，未来有太多不确定，但既然缘分让我们牵起了手，我就想牢牢抓住你的手，不放开、不撒手，一起把剩下的路走得热热闹闹。
+
+往后的日子，愿我们都保持这份热爱，我会好好爱你，也盼着你一直好好爱我。`;
+
+        const letterElement = document.getElementById('letter-content');
+        const containerElement = document.querySelector('.container');
+        let charIndex = 0;
+        const typingSpeed = 100;
+
+        function typeWriter() {
+            if (charIndex < letterText.length) {
+                const char = letterText.charAt(charIndex);
+                if (char === '\n') {
+                    letterElement.innerHTML += '<br>';
+                } else if (char === ' ') {
+                    letterElement.innerHTML += '&nbsp;';
+                } else {
+                    letterElement.innerHTML += char;
+                }
+                charIndex++;
+                containerElement.scrollTop = containerElement.scrollHeight;
+                setTimeout(typeWriter, typingSpeed);
+            } else {
+                const cursor = document.querySelector('.typing-cursor');
+                if (cursor) cursor.remove();
+            }
+        }
+
+        function startTyping() {
+            letterElement.classList.add('show');
+            letterElement.innerHTML = `<span class="typing-cursor">❤️</span>`;
+            setTimeout(typeWriter, 500);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('span');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            heart.style.animationDelay = (Math.random() * 5) + 's';
+            document.querySelector('.hearts-background').appendChild(heart);
+            heart.addEventListener('animationend', () => heart.remove());
+        }
+        setInterval(createHeart, 800);
+
+        const music = document.getElementById('bg-music');
+        const musicStatus = document.getElementById('music-status');
+        const musicToggleBtn = document.getElementById('music-toggle-btn');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicToggleBtn.textContent = '▶';
+                musicStatus.textContent = '音乐已暂停';
+                isPlaying = false;
+            } else {
+                music.play().then(() => {
+                    musicToggleBtn.textContent = '⏸';
+                    musicStatus.textContent = '正在播放...';
+                    isPlaying = true;
+                }).catch(e => {
+                    console.error("自动播放失败:", e);
+                    musicStatus.textContent = '点击 ▶ 播放音乐';
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            music.play().then(() => {
+                musicToggleBtn.textContent = '⏸';
+                musicStatus.textContent = '正在播放...';
+                isPlaying = true;
+            }).catch(() => {
+                musicToggleBtn.textContent = '▶';
+                musicStatus.textContent = '点击 ▶ 播放音乐';
+            });
+            startTyping();
+        });
+    </script>
+</body>
+</html>
